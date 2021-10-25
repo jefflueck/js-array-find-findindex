@@ -16,7 +16,8 @@ function findUserByUsername(usersArray, username) {
   return usersArray.find(function(user){
     console.log(user);
     console.log(username);
-    return user.username === usersArray.username;
+    // return user.username === usersArray.username;
+    return user.username === username;
   })
 }
 
@@ -34,12 +35,20 @@ removeUser(users, 'akagen') // undefined
 */
 
 function removeUser(usersArray, username) {
-  return usersArray.findIndex(function(user){
-    console.log(user.username)
-    if(user.username !== username && user.username === -1){
-      userArray.username.remove()
-    } else {
-      return user.username === username;
-    }
+  let foundUser = usersArray.findIndex(function(user){
+   return user.username === username;
   })
+  if(foundUser === -1) return;
+
+  return usersArray.splice(foundUser,1)[0];
 }
+
+  // return usersArray.findIndex(function(user){
+  //   console.log(user.username)
+  //   if(user.username !== username && user.username === -1){
+  //     userArray.username.remove()
+  //   } else {
+  //     return user.username === username;
+  //   }
+  // })
+// }
